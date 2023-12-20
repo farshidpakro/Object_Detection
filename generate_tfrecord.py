@@ -24,7 +24,7 @@ import xml.etree.ElementTree as ET
 import argparse
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'    # Suppress TensorFlow logging (1)
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from PIL import Image
 from object_detection.utils import dataset_util, label_map_util
 from collections import namedtuple
@@ -108,7 +108,7 @@ def split(df, group):
 
 
 def create_tf_example(group, path):
-    with tf.compat.v1.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
+    with tf.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
         encoded_jpg = fid.read()
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = Image.open(encoded_jpg_io)
@@ -131,7 +131,7 @@ def create_tf_example(group, path):
         classes_text.append(row['class'].encode('utf8'))
         classes.append(class_text_to_int(row['class']))
 
-    tf_example = tf.compat.v1.train.Example(features=tf.compat.v1.train.Features(feature={
+    tf_example = tf.train.Example(features=tf.train.Features(feature={
         'image/height': dataset_util.int64_feature(height),
         'image/width': dataset_util.int64_feature(width),
         'image/filename': dataset_util.bytes_feature(filename),
@@ -150,7 +150,7 @@ def create_tf_example(group, path):
 
 def main(_):
 
-    writer = tf.compat.v1.python_io.TFRecordWriter(args.output_path)
+    writer = tf.python_io.TFRecordWriter(args.output_path)
     path = os.path.join(args.image_dir)
     examples = xml_to_csv(args.xml_dir)
     grouped = split(examples, 'filename')
@@ -165,4 +165,4 @@ def main(_):
 
 
 if __name__ == '__main__':
-    tf.compat.v1.app.run()
+    tf.app.run()
