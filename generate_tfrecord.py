@@ -14,6 +14,10 @@ optional arguments:
                         Path to the folder where the input image files are stored. Defaults to the same directory as XML_DIR.
   -c CSV_PATH, --csv_path CSV_PATH
                         Path of output .csv file. If none provided, then no file will be written.
+
+example 
+ python .\generate_tfrecord.py -x .\CV_Pic_Test\ -l .\label_map\label_map.pbtxt -o .\test\test.record
+  python .\generate_tfrecord.py -x .\CV_Pic\ -l .\label_map\label_map.pbtxt -o .\train\train.record   
 """
 
 import os

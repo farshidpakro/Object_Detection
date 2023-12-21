@@ -1,0 +1,26 @@
+<annotation>
+	<folder>CV_Pic</folder>
+	<filename>thumbsup.970b88b6-9ff2-11ee-8969-581122b00520.jpg</filename>
+	<path>C:\Users\farshid\Desktop\Object_Detection\CV_Pic\thumbsup.970b88b6-9ff2-11ee-8969-581122b00520.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>ThumbsUp</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>254</xmin>
+			<ymin>152</ymin>
+			<xmax>327</xmax>
+			<ymax>267</ymax>
+		</bndbox>
+	</object>
+</annotation>
