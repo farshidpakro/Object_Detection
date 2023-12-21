@@ -14,7 +14,7 @@ detection_model = model_builder.build(model_config=configs['model'], is_training
 
 # Restore checkpoint
 ckpt = tf.compat.v2.train.Checkpoint(model=detection_model)
-ckpt.restore(r'Custom_Model\ckpt-3.index').expect_partial()
+ckpt.restore(r'Custom_Model\ckpt-3').expect_partial()
 
 @tf.function
 def detect_fn(image):
